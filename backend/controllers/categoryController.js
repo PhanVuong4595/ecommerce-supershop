@@ -5,7 +5,7 @@ import Product from "../models/productModel";
 import asyncHandler from "express-async-handler";
 
 export const addCategory = asyncHandler(async (req, res, next) => {
-  req.body.addedBy = req.userInfo.userId;
+  // req.body.addedBy = req.userInfo.userId;
   const category = await Category.create(req.body);
   res.status(201).json({ success: true, category });
 });
@@ -22,7 +22,7 @@ export const getCategoryDetails = asyncHandler(async (req, res, next) => {
 });
 
 export const updateCategory = asyncHandler(async (req, res, next) => {
-  req.body.updatedBy = req.userInfo.userId;
+  // req.body.updatedBy = req.userInfo.userId;
   let category = await Category.findById(req.params.id);
   if (!category) return next(new ErrorHandler("Category not found.", 404));
   category = await Category.findByIdAndUpdate(req.params.id, req.body, {

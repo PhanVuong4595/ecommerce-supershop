@@ -12,14 +12,14 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: [true, "Plaese enter category description."],
     },
-    addedBy: {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-    },
-    updatedBy: {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-    },
+    // addedBy: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "User",
+    // },
+    // updatedBy: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "User",
+    // },
     discontinued: { Boolean, default: false },
   },
   { timestamps: true }

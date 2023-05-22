@@ -11,6 +11,7 @@ import connectDatabase from "./config/database";
 // import routes
 import errorMiddleware from "./middleware/error.js";
 import categoryRouter from "./routes/categoryRoute";
+import brandRouter from "./routes/brandRoute";
 
 //components
 const app = express();
@@ -42,6 +43,7 @@ app.get("/", (req, res) => {
   res.send("Backend is Running..");
 });
 app.use("/api", categoryRouter);
+app.use("/api", brandRouter);
 
 app.use(errorMiddleware);
 
