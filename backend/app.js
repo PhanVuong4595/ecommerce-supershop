@@ -9,6 +9,8 @@ import dotenv from "dotenv";
 import connectDatabase from "./config/database";
 
 // import routes
+import errorMiddleware from "./middleware/error.js";
+import categoryRouter from "./routes/categoryRoute";
 
 //components
 const app = express();
@@ -17,7 +19,8 @@ dotenv.config();
 // middleware
 app.use(
   cors({
-    //     origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "*"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -38,6 +41,9 @@ connectDatabase();
 app.get("/", (req, res) => {
   res.send("Backend is Running..");
 });
+app.use("/api", categoryRouter);
+
+app.use(errorMiddleware);
 
 // connection
 app.listen(process.env.PORT, () => {
