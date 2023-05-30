@@ -5,7 +5,7 @@ import Product from "../models/productModel";
 import asyncHandler from "express-async-handler";
 
 export const addBrand = asyncHandler(async (req, res, next) => {
-  // req.body.addedBy = req.userInfo.userId;
+  req.body.addedBy = req.userInfo.userId;
   const brand = await Brand.create(req.body);
   res.status(201).json({ success: true, brand });
 });
@@ -22,7 +22,7 @@ export const getBrandDetails = asyncHandler(async (req, res, next) => {
 });
 
 export const updateBrand = asyncHandler(async (req, res, next) => {
-  // req.body.updatedBy = req.userInfo.userId;
+  req.body.updatedBy = req.userInfo.userId;
   let brand = await Brand.findById(req.params.id);
   if (!brand) return next(new ErrorHandler("Brand not found.", 404));
   brand = await Brand.findByIdAndUpdate(req.params.id, req.body, {

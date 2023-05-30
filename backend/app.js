@@ -4,6 +4,7 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import path from "path";
 
 // import db
 import connectDatabase from "./config/database";
@@ -12,6 +13,8 @@ import connectDatabase from "./config/database";
 import errorMiddleware from "./middleware/error.js";
 import categoryRouter from "./routes/categoryRoute";
 import brandRouter from "./routes/brandRoute";
+import authRoute from "./routes/authRoute";
+import userRoute from "./routes/userRoute";
 
 //components
 const app = express();
@@ -30,6 +33,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 // uploads;
 app.use("/", express.static("uploads"));
@@ -44,6 +48,8 @@ app.get("/", (req, res) => {
 });
 app.use("/api", categoryRouter);
 app.use("/api", brandRouter);
+app.use("/api", authRoute);
+app.use("/api", userRoute);
 
 app.use(errorMiddleware);
 
