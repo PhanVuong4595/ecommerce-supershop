@@ -17,6 +17,9 @@ import authRoute from "./routes/authRoute";
 import userRoute from "./routes/userRoute";
 import storeRoute from "./routes/storeRoute";
 import productRoute from "./routes/productRouter";
+import reviewRoute from "./routes/reviewRoute";
+import orderRoute from "./routes/orderRoute";
+import paymentRoute from "./routes/paymentRoute";
 
 //components
 const app = express();
@@ -54,6 +57,9 @@ app.use("/api", authRoute);
 app.use("/api", userRoute);
 app.use("/api", storeRoute);
 app.use("/api", productRoute);
+app.use("/api", reviewRoute);
+app.use("/api", orderRoute);
+app.use("/api", paymentRoute);
 
 app.use(errorMiddleware);
 
