@@ -15,6 +15,8 @@ import categoryRouter from "./routes/categoryRoute";
 import brandRouter from "./routes/brandRoute";
 import authRoute from "./routes/authRoute";
 import userRoute from "./routes/userRoute";
+import storeRoute from "./routes/storeRoute";
+import productRoute from "./routes/productRouter";
 
 //components
 const app = express();
@@ -50,6 +52,8 @@ app.use("/api", categoryRouter);
 app.use("/api", brandRouter);
 app.use("/api", authRoute);
 app.use("/api", userRoute);
+app.use("/api", storeRoute);
+app.use("/api", productRoute);
 
 app.use(errorMiddleware);
 
